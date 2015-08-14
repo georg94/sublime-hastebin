@@ -16,6 +16,8 @@ class UploadToHastebin( sublime_plugin.TextCommand ):
   def run(self, view):
     settings = sublime.load_settings("sublime-hastebin.sublime-settings")
     hastebinUrl = settings.get("hastebin-url")
+    if not (hastebinUrl.startswith("http://") or hastebinUrl.startswith("https://")):
+      hastebinUrl = "http://" + hastebinUrl
     if not "document" in hastebinUrl:
       hastebinUrl = urljoin(hastebinUrl, "documents")
 
