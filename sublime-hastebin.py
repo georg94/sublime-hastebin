@@ -30,7 +30,12 @@ class UploadToHastebin( sublime_plugin.TextCommand ):
       request = urllib.Request(hastebinUrl, document)
       response = urllib.urlopen(request)
       body = response.read()
+
       documentKey = json.loads(body.decode("utf8"))["key"]
+
+      window = self.view.window()
+      if "file_extension" in window.extract_variables():
+        documentKey += "."+window.extract_variables()["file_extension"]
       url = urljoin(hastebinUrl, documentKey)
 
       if settings.get("copy-to-clipboard"):
