@@ -1,5 +1,10 @@
 {
+  // The url to hastebin. If no protocol is given http is used by default
   "hastebin-url": "http://hastebin.com/",
+
+  // copy the url of the haste to the clipboard after uploading
   "copy-to-clipboard": true,
+
+  // open the haste in you default browser after uploading
   "open-in-browser": true
 }
